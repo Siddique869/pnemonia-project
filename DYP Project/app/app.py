@@ -9,7 +9,7 @@ from tensorflow.keras.models import load_model # type: ignore
 from tensorflow.keras.preprocessing import image # type: ignore
 import mysql.connector
 
-datapath = 'C:/Users/HP/Downloads/DYP Project/app/sample'
+datapath = 'DYP Project/app/sample'
 @st.cache_data 
 def load_sample_data1():
     img1 = Image.open(datapath + '/data1n.jpeg')
