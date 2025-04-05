@@ -37,7 +37,7 @@ def load_and_preprocess_image(img):
 
 # STREAMLIT CODE
 
-top_image = Image.open("C:/Users/HP/Downloads/DYP Project/app/sidebar1.jpg")
+top_image = Image.open("DYP Project/app/sidebar1.jpg")
 
 st.sidebar.image(top_image)
 
