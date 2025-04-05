@@ -50,7 +50,7 @@ home_tab, working_tab, developer_tab,Records_tab = st.tabs(["Home", "Working", "
 
 with home_tab:
     st.title('Pnemonia disease symptoms and precautions:')
-    st.image('./pnemonia1.jpg')
+    st.image('DYP Project/app/pnemonia1.jpg')
     st.write('Pneumonia is an infection that inflames the air sacs in one or both lungs, which can cause symptoms ranging from mild to severe. The severity of pneumonia can depend on factors such as the persons age, overall health, and the type of germ causing the infection. Common symptoms of pneumonia include:')
     st.title('Common Symptoms of Pneumonia:')   
     st.write('1.Cough:')  
