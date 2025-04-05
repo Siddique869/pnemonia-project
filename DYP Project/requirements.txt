@@ -8,4 +8,4 @@ seaborn
 fsspec
 Pillow
 tensorflow
-numpy
+
