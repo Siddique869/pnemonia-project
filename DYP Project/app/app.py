@@ -184,30 +184,27 @@ with developer_tab:
                     
 with Records_tab:
  
-  config = {
+ # Database configuration
+config = {
     'user': 'root',
     'password': 'siddique@5/7',
     'host': 'localhost',
     'port': 3306,
     'database': 'userdb'
-          }
+}
 
-  def create_connection():
+def create_connection():
     """Create a connection to the MySQL database."""
-    db = mysql.connector.connect(**config)
-    return db
+    try:
+        db = mysql.connector.connect(**config)
+        return db
+    except mysql.connector.Error as err:
+        st.error(f"Error: {err}")
+        return None
 
-  def create_database(db):
-    """Create the 'userdb' database if it doesn't exist."""
-    cursor = db.cursor()
-    cursor.execute("CREATE DATABASE IF NOT EXISTS userdb")
-    db.commit()  # Commit to apply the changes
-    cursor.close()
-
-  def create_patients_table(db):
+def create_patients_table(db):
     """Create the patients table in the database."""
     cursor = db.cursor()
-
     create_patients_table_query = """
     CREATE TABLE IF NOT EXISTS patients (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -219,45 +216,39 @@ with Records_tab:
         email VARCHAR(255)
     )
     """
-
     cursor.execute(create_patients_table_query)
     db.commit()
-    st.write("Patients table created successfully.")
+    cursor.close()
+    st.success("Patients table created successfully.")
 
-  def insert_patient_record(db, name, age, contact_number, email, Result):
+def insert_patient_record(db, name, age, contact_number, email, Result):
     """Insert a new patient record into the 'patients' table."""
     cursor = db.cursor()
-
-    # Select the database
-    cursor.execute("USE userdb")
-
     insert_patient_query = """
     INSERT INTO patients (name, age, contact_number, email, Result)
     VALUES (%s, %s, %s, %s, %s)
     """
-
     patient_data = (name, age, contact_number, email, Result)
-
     cursor.execute(insert_patient_query, patient_data)
     db.commit()
-    st.write("Patient record inserted successfully.")
+    cursor.close()
+    st.success("Patient record inserted successfully.")
 
-  def fetch_all_patients(db):
+def fetch_all_patients(db):
     """Fetch all records from the 'patients' table."""
     cursor = db.cursor()
-
-    # Select the database
-    cursor.execute("USE userdb")
-
-    # Fetch all patients
     select_patients_query = "SELECT * FROM patients"
     cursor.execute(select_patients_query)
     patients = cursor.fetchall()
-
+    cursor.close()
     return patients
 
-  def main():
+def main():
     db = create_connection()
+    if db is None:
+        return  # Exit if the connection failed
+
+    create_patients_table(db)  # Ensure the table exists
 
     st.title("Patient Management System :hospital:")
     menu = ["Add Patient Record", "Show Patient Records"]
@@ -265,7 +256,6 @@ with Records_tab:
 
     if options == "Add Patient Record":
         st.subheader("Enter patient details :woman_in_motorized_wheelchair:")
-
         name = st.text_input("Enter name of patient", key="name")
         age = st.number_input("Enter age of patient", key="age", value=1)
         contact = st.text_input("Enter contact of patient", key="contact")
@@ -281,6 +271,10 @@ with Records_tab:
             st.subheader("All patient records :magic_wand:")
             df = pd.DataFrame(patients, columns=['ID', 'Name', 'Age', 'Contact Number', 'Email', 'Result', 'Date Added'])
             st.dataframe(df)
+        else:
+            st.write("No patient records found.")
 
-  if __name__ == "__main__":
+    db.close()  # Close the database connection
+
+if __name__ == "__main__":
     main()
