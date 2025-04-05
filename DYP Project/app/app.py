@@ -80,7 +80,7 @@ with home_tab:
 
 with working_tab :
     st.title(' PneumoScan Working!')
-    st.image('./ae-cnn-final.png')
+    st.image('DYP Project/app/ae-cnn-final.png')
     st.header('Encoder, Decoder, and Autoencoder')
     st.write("Overview of AE-CNN: Our proposed framework consists of three main blocks namely encoder, decoder, and classifier. The figure shows the autoencoder based convolutional neural network (AE-CNN) model for disease classification. Here, autoencoder reduces the spatial dimension of the imput image of size 1024 × 1024. The encoder produces a latent code tensor of size 256 × 256 and decoder reconstructs back the image. This latent code tensor is passed through a CNN classifier for classifying the chest x-rays. The final loss is the weighted sum of the resconstruction loss by decoder and classification loss by the CNN classifier.")
     st.write("Encoder:")
