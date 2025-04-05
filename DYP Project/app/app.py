@@ -185,15 +185,15 @@ with developer_tab:
 with Records_tab:
  
  # Database configuration
-config = {
+  config = {
     'user': 'root',
     'password': 'siddique@5/7',
     'host': 'localhost',
     'port': 3306,
     'database': 'userdb'
-}
+       }
 
-def create_connection():
+  def create_connection():
     """Create a connection to the MySQL database."""
     try:
         db = mysql.connector.connect(**config)
@@ -202,7 +202,7 @@ def create_connection():
         st.error(f"Error: {err}")
         return None
 
-def create_patients_table(db):
+  def create_patients_table(db):
     """Create the patients table in the database."""
     cursor = db.cursor()
     create_patients_table_query = """
@@ -221,7 +221,7 @@ def create_patients_table(db):
     cursor.close()
     st.success("Patients table created successfully.")
 
-def insert_patient_record(db, name, age, contact_number, email, Result):
+  def insert_patient_record(db, name, age, contact_number, email, Result):
     """Insert a new patient record into the 'patients' table."""
     cursor = db.cursor()
     insert_patient_query = """
@@ -234,7 +234,7 @@ def insert_patient_record(db, name, age, contact_number, email, Result):
     cursor.close()
     st.success("Patient record inserted successfully.")
 
-def fetch_all_patients(db):
+  def fetch_all_patients(db):
     """Fetch all records from the 'patients' table."""
     cursor = db.cursor()
     select_patients_query = "SELECT * FROM patients"
