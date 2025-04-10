@@ -189,7 +189,6 @@ with Records_tab:
     'user': 'if0_38718473',
     'password': 'siddiquesanadi',
     'host': 'sql300.infinityfree.com',
-    
     'database': 'if0_38718473_userdb'
        }
 
