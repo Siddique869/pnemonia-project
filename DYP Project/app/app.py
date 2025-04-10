@@ -187,7 +187,7 @@ with Records_tab:
  # Database configuration
   config = {
     'user': 'if0_38718473',
-    'password': 'siddiquesanadi',
+    'password': 'siddique@5/7',
     'host': 'sql300.infinityfree.com',
     'database': 'if0_38718473_userdb'
        }
