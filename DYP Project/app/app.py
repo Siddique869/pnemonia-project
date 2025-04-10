@@ -188,7 +188,7 @@ with Records_tab:
   config = {
     'user': 'if0_38718473',
     'password': 'siddiquesanadi',
-    'host': 'sql300.infinityfree.com',
+    'host': ' 192.168.2.226',
     'database': 'if0_38718473_userdb',
       'port':3306
        }
