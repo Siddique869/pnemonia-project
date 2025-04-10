@@ -190,7 +190,7 @@ with Records_tab:
     'password': 'siddiquesanadi',
     'host': 'sql300.infinityfree.com',
     'database': 'if0_38718473_userdb',
-      'port':3310
+      'port':3306
        }
 
   def create_connection():
