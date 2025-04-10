@@ -186,10 +186,10 @@ with Records_tab:
  
  # Database configuration
   config = {
-    'user': 'root',
-    'password': 'siddique@5/7',
-    'host': ' 192.168.2.226',
-    'database': 'userdb',
+    'user': 'if0_38718473',
+    'password': 'siddiquesanadi',
+    'host': 'sql300.infinityfree.com',
+    'database': 'if0_38718473_userdb',
       'port':3306
        }
 
