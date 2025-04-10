@@ -186,11 +186,11 @@ with Records_tab:
  
  # Database configuration
   config = {
-    'user': 'root',
-    'password': 'siddique@5/7',
-    'host': 'localhost',
+    'user': 'if0_38718473',
+    'password': 'siddiquesanadi',
+    'host': 'sql300.infinityfree.com',
     'port': 3306,
-    'database': 'userdb'
+    'database': 'if0_38718473_userdb'
        }
 
   def create_connection():
