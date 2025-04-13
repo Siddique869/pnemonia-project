@@ -9,3 +9,4 @@ fsspec
 Pillow
 tensorflow
 mysql-connector-python
+mysql-connector
