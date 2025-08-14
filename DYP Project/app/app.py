@@ -183,23 +183,32 @@ with developer_tab:
                     st.warning("The Patient has Normal X-Ray: Pnemonia Negative")
                     
 with Records_tab:
- 
- # Database configuration
-  config = {
-    'user': 'if0_38718473',
-    'password': 'siddiquesanadi',
-    'host': 'sql300.infinityfree.com',
-    'database': 'if0_38718473_userdb'
-       }
+ def create_connection():
+    return sqlite3.connect("patients.db", check_same_thread=False)
 
-  def create_connection():
-    """Create a connection to the MySQL database."""
-    try:
-        db = mysql.connector.connect(**config)
-        return db
-    except mysql.connector.Error as err:
-        st.error(f"Error: {err}")
-        return None
+def execute_schema_sqlite(db):
+    cursor = db.cursor()
+    with open("database_schema.sql", "r") as f:
+        sql_script = f.read()
+    cursor.executescript(sql_script)
+    db.commit()
+    cursor.close()
+ # # Database configuration
+ #  config = {
+ #    'user': 'if0_38718473',
+ #    'password': 'siddiquesanadi',
+ #    'host': 'sql300.infinityfree.com',
+ #    'database': 'if0_38718473_userdb'
+ #       }
+
+ #  def create_connection():
+ #    """Create a connection to the MySQL database."""
+ #    try:
+ #        db = mysql.connector.connect(**config)
+ #        return db
+ #    except mysql.connector.Error as err:
+ #        st.error(f"Error: {err}")
+ #        return None
 
   def create_patients_table(db):
     """Create the patients table in the database."""
