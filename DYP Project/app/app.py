@@ -184,13 +184,15 @@ with developer_tab:
                     
 with Records_tab:
  
- # Database configuration
-  config = {
-    'user': 'if0_38718473',
-    'password': 'siddiquesanadi',
-    'host': 'sql300.infinityfree.com',
-    'database': 'if0_38718473_userdb'
-       }
+# Database configuration — reads from Streamlit secrets
+config = {
+    'user': st.secrets["db"]["user"],
+    'password': st.secrets["db"]["password"],
+    'host': st.secrets["db"]["host"],
+    'port': st.secrets["db"]["port"],
+    'database': st.secrets["db"]["database"],
+    'ssl_disabled': False
+}
 
   def create_connection():
     """Create a connection to the MySQL database."""
