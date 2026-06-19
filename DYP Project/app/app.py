@@ -41,11 +41,8 @@ def get_db_config():
         'host': st.secrets["db"]["host"],
         'port': int(st.secrets["db"]["port"]),
         'database': st.secrets["db"]["database"],
-        'ssl_verify_cert': False,
-        'ssl_verify_identity': False,
         'use_pure': True
     }
-
 def create_connection():
     try:
         db = mysql.connector.connect(**get_db_config())
