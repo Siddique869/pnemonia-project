@@ -41,7 +41,9 @@ def get_db_config():
         'host': st.secrets["db"]["host"],
         'port': int(st.secrets["db"]["port"]),
         'database': st.secrets["db"]["database"],
-                'ssl_disabled': False
+                'ssl_disabled': False,
+                'use_pure': True
+
 
     }
 def create_connection():
