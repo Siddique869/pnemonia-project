@@ -10,8 +10,7 @@ from tensorflow.keras.preprocessing import image # type: ignore
 import mysql.connector
 from PIL import Image
 
-logo = Image.open("siddique.png")
-
+logo = Image.open("DYP Project/app/siddique.png")
 st.set_page_config(
     page_title="Siddique | PneumoScan",
     page_icon=logo,
