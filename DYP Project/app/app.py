@@ -8,7 +8,16 @@ from PIL import Image
 from tensorflow.keras.models import load_model # type: ignore
 from tensorflow.keras.preprocessing import image # type: ignore
 import mysql.connector
+from PIL import Image
 
+logo = Image.open("siddique.png")
+
+st.set_page_config(
+    page_title="Siddique | PneumoScan",
+    page_icon=logo,
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
 datapath = 'DYP Project/app/sample'
 
 @st.cache_data 
